@@ -1,0 +1,114 @@
+/* General */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: 20px;
+    color: #222;
+}
+
+.instructions {
+    font-size: 1.5rem;
+    margin: 10px 20px;
+    color: #555;
+}
+
+/* Contenedor principal */
+#facemash {
+    max-width: 1200px; /* Más estrecho */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#face{
+    background-color: aqua;
+}
+/* Imágenes */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+    flex-wrap: nowrap; /* Evita que las imágenes se apilen */
+}
+
+.image {
+    cursor: pointer;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.image:hover {
+    transform: scale(1.05); /* Ampliación más sutil */
+}
+
+.image img {
+    width: 100%;
+    max-width: 400px; /* Ancho en PC */
+    height: 600px; /* Alto en PC */
+    object-fit: cover; /* Recorta para mantener proporciones */
+    border-radius: 15px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+
+    .images {
+        gap: 20px;
+    }
+
+    .image img {
+        max-width: 350px; /* Reduce ancho en tablets */
+        height: 500px; /* Altura ajustada */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .images {
+        gap: 15px;
+        flex-wrap: nowrap; /* Evita que las imágenes se apilen */
+    }
+
+    .image img {
+        max-width: 45%; /* Ancho ajustado */
+        height: 45%; /* Altura ajustada */
+        object-fit: cover; /* Mantiene proporciones */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .instructions {
+        font-size: 1.2rem;
+    }
+
+    .images {
+        gap: 10px;
+        justify-content: center; /* Alinea las imágenes al centro */
+        flex-wrap: nowrap; /* No se apilan las imágenes */
+    }
+
+    .image img {
+        max-width: 45%; /* Las imágenes ocupan el 45% del ancho de la pantalla */
+        height: 45vh; /* Altura ocupa el 45% de la altura de la pantalla */
+        object-fit: cover; /* Mantiene proporciones */
+        border-radius: 10px; /* Bordes más pequeños */
+    }
+}
