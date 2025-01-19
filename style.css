@@ -14,15 +14,9 @@ h1 {
     color: #222;
 }
 
-.instructions {
-    font-size: 1.5rem;
-    margin: 10px 20px;
-    color: #555;
-}
-
 /* Contenedor principal */
 #facemash {
-    max-width: 1200px; /* Más estrecho */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -35,80 +29,54 @@ h1 {
 .images {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 50px;
-    flex-wrap: nowrap; /* Evita que las imágenes se apilen */
+    gap: 50px; /* Espacio entre imágenes */
+    margin-top: 0px;
 }
 
 .image {
     cursor: pointer;
-    transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.image:hover {
-    transform: scale(1.05); /* Ampliación más sutil */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .image img {
     width: 100%;
-    max-width: 400px; /* Ancho en PC */
-    height: 600px; /* Alto en PC */
-    object-fit: cover; /* Recorta para mantener proporciones */
+    max-width: 500px; /* Ancho máximo para imágenes en PC */
+    height: 500px; /* Altura fija para imágenes en PC */
+    object-fit: cover;
     border-radius: 15px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsivo */
 @media (max-width: 1024px) {
-    h1 {
-        font-size: 3rem;
-    }
-
-    .images {
-        gap: 20px;
-    }
-
     .image img {
-        max-width: 100%; /* Ancho más flexible para tablets */
-        height: auto; /* Ajusta la altura proporcionalmente */
+        max-width: 400px;
+        height: 600px;
     }
 }
 
 @media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-    }
-
     .images {
-        gap: 20px;
+        gap: 30px;
         flex-wrap: wrap; /* Permite que las imágenes se apilen si es necesario */
-        justify-content: center; /* Centra las imágenes */
     }
 
     .image img {
-        max-width: 100%; /* Ancho flexible para dispositivos más pequeños */
-        height: auto; /* Mantiene la proporción de la imagen */
+        max-width: 100%;
+        height: auto;
     }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 2.5rem; /* Ajusta el tamaño del título */
-    }
-
-    .instructions {
-        font-size: 1.2rem;
-    }
-
-    
     .images {
-        gap: 15px;
-        justify-content: center; /* Centra las imágenes */
-        flex-wrap: wrap; /* Apila las imágenes si es necesario */
+        gap: 20px;
     }
 
     .image img {
-        max-width: 100%; /* Ancho flexible */
-        height: auto; /* Mantiene la proporción de la imagen */
+        max-width: 100%;
+        height: auto;
     }
 }
