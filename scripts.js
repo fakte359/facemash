@@ -1,13 +1,25 @@
 // Lista de imágenes y sus nombres amigables
 const imageNames = {
-    'image1.jpg': 'Mafe',
-    'image2.jpeg': 'Khaterine',
-    'image3.jpeg': 'Carolina',
-    'image4.jpeg': 'Diana',
-    'image5.jpeg': 'Angie',
-    'image6.jpeg': 'Carol',
-    'image7.png': 'Dakota',
-    'image8.jpeg': 'Kamila'
+    'image1.jpeg': 'Alejo',
+    'image2.jpeg': 'Danel',
+    'image3.jpeg': 'Peso espuma(Cristancho)',
+    'image4.jpeg': 'Cuervo',
+    'image5.jpeg': 'Diomedes',
+    'image6.jpeg': 'Brayan',
+    'image7.jpeg': 'Daniel Rodriguez',
+    'image8.jpeg': 'Carlitos',
+    'image9.jpeg': 'Linguini(Carmona)',
+    'image10.jpeg': 'Valvuena',
+    'image11.jpeg': 'Ricaurte',
+    'image12.jpeg': 'Rayo',
+    'image13.jpeg': 'Cristian',
+    'image14.jpeg': 'Calderon',
+    'image15.jpeg': 'Eberth',
+    'image16.jpeg': 'Parrra',
+    'image17.jpeg': 'Cubides',
+    'image18.jpeg': 'Romero',
+    'image19.jpeg': 'Aldrin',
+    'image20.jpeg': 'Deiby'
 };
 
 // Array de imágenes disponibles (solo las claves de imageNames)
@@ -20,14 +32,26 @@ const resultSection = document.getElementById('result');
 const winnerText = document.getElementById('winner');
 
 let votes = {
-    'image1.jpg': 0,
+    'image1.jpeg': 0,
     'image2.jpeg': 0,
     'image3.jpeg': 0,
     'image4.jpeg': 0,
     'image5.jpeg': 0,
     'image6.jpeg': 0,
-    'image7.png': 0,
-    'image8.jpeg': 0
+    'image7.jpeg': 0,
+    'image8.jpeg': 0,
+    'image9.jpeg': 0,
+    'image10.jpeg': 0,
+    'image11.jpeg': 0,
+    'image12.jpeg': 0,
+    'image13.jpeg': 0,
+    'image14.jpeg': 0,
+    'image15.jpeg': 0,
+    'image16.jpeg': 0,
+    'image17.jpeg': 0,
+    'image18.jpeg': 0,
+    'image19.jpeg': 0,
+    'image20.jpeg': 0
 };
 
 let currentImages = [];  // Para llevar el control de las imágenes ya mostradas
