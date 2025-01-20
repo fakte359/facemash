@@ -31,34 +31,15 @@ const imageRight = document.getElementById('image-right');
 const resultSection = document.getElementById('result');
 const winnerText = document.getElementById('winner');
 
-let votes = {
-    'image1.jpeg': 0,
-    'image2.jpeg': 0,
-    'image3.jpeg': 0,
-    'image4.jpeg': 0,
-    'image5.jpeg': 0,
-    'image6.jpeg': 0,
-    'image7.jpeg': 0,
-    'image8.jpeg': 0,
-    'image9.jpeg': 0,
-    'image10.jpeg': 0,
-    'image11.jpeg': 0,
-    'image12.jpeg': 0,
-    'image13.jpeg': 0,
-    'image14.jpeg': 0,
-    'image15.jpeg': 0,
-    'image16.jpeg': 0,
-    'image17.jpeg': 0,
-    'image18.jpeg': 0,
-    'image19.jpeg': 0,
-    'image20.jpeg': 0
-};
+// Votos iniciales
+let votes = {};
+images.forEach(image => votes[image] = 0);
 
 let currentImages = [];  // Para llevar el control de las imágenes ya mostradas
+let votingEnded = false; // Para evitar más clics después de finalizar
 
 // Función para obtener una imagen aleatoria que no esté en uso
 function getRandomImage() {
-    // Filtramos las imágenes que ya han sido mostradas
     const availableImages = images.filter(img => !currentImages.includes(img));
     const randomIndex = Math.floor(Math.random() * availableImages.length);
     return availableImages[randomIndex];
@@ -66,6 +47,8 @@ function getRandomImage() {
 
 // Función para actualizar la imagen tras votar
 function updateImage(side) {
+    if (votingEnded) return; // No permitir clics si ya se terminó la votación
+
     const currentLeft = imageLeft.querySelector('img').src.split('/').pop();
     const currentRight = imageRight.querySelector('img').src.split('/').pop();
 
@@ -101,20 +84,56 @@ function updateImage(side) {
 
 // Función para mostrar el resultado final
 function showResult() {
-    let winnerImage = '';
-    let maxVotes = 0;
+    votingEnded = true; // Establecer el flag para detener los clics
 
-    // Determinar la imagen ganadora
-    for (const [image, voteCount] of Object.entries(votes)) {
-        if (voteCount > maxVotes) {
-            maxVotes = voteCount;
-            winnerImage = image;
-        }
-    }
+    // Ordenar las imágenes por votos de mayor a menor
+    const sortedImages = Object.entries(votes).sort((a, b) => b[1] - a[1]);
 
-    // Mostrar el nombre de la imagen ganadora
-    winnerText.textContent = `La mas bonita para vos es ${imageNames[winnerImage]}`;
-    resultSection.classList.remove('hidden');
+    // Mostrar el ganador
+    const [winnerImage, maxVotes] = sortedImages[0];
+    winnerText.textContent = `La más bonita para vos es ${imageNames[winnerImage]} con ${maxVotes} votos.`;
+
+    // Crear las categorías
+    const categories = [
+        { title: 'Apoteosico', range: [0, 4] },       // Primeras 5 imágenes
+        { title: 'Parchable', range: [5, 9] },    // Siguientes 5 imágenes
+        { title: 'Suave', range: [10, 14] },// Siguientes 5 imágenes
+        { title: 'Hoprrible extremo', range: [15, 19] } // Últimas 5 imágenes
+    ];
+
+    // Mostrar las imágenes con categorías
+    categories.forEach(category => {
+        const categoryTitle = document.createElement('h3');
+        categoryTitle.textContent = category.title;
+        resultSection.appendChild(categoryTitle);
+
+        const categoryList = document.createElement('ul');
+        categoryList.style.listStyle = 'none'; // Estilo opcional
+        categoryList.style.padding = '0';
+
+        // Añadir imágenes dentro del rango de esta categoría
+        sortedImages.slice(category.range[0], category.range[1] + 1).forEach(([image, voteCount]) => {
+            const listItem = document.createElement('li');
+            listItem.style.marginBottom = '10px';
+
+            const imgElement = document.createElement('img');
+            imgElement.src = `upload/${image}`;
+            imgElement.alt = imageNames[image];
+            imgElement.style.maxWidth = '100px';
+            imgElement.style.borderRadius = '10px';
+            imgElement.style.marginRight = '10px';
+
+            const text = document.createTextNode(
+                `${imageNames[image]} - ${voteCount} votos`
+            );
+
+            listItem.appendChild(imgElement);
+            listItem.appendChild(text);
+            categoryList.appendChild(listItem);
+        });
+
+        resultSection.appendChild(categoryList);
+    });
 }
 
 // Función para cargar las imágenes iniciales
