@@ -87,9 +87,9 @@ function updateImage(side) {
 
         // Cambiar la imagen en el lado correspondiente
         if (side === 'left') {
-            imageRight.querySelector('img').src = `uploads/${newImage}`;
+            imageRight.querySelector('img').src = `upload/${newImage}`;
         } else {
-            imageLeft.querySelector('img').src = `uploads/${newImage}`;
+            imageLeft.querySelector('img').src = `upload/${newImage}`;
         }
 
         // Añadir la nueva imagen al array de imágenes mostradas
@@ -123,8 +123,8 @@ function loadInitialImages() {
     const secondImage = getRandomImage();
 
     // Mostrar las imágenes en las posiciones izquierda y derecha
-    imageLeft.innerHTML = `<img src="uploads/${firstImage}" alt="Imagen Izquierda">`;
-    imageRight.innerHTML = `<img src="uploads/${secondImage}" alt="Imagen Derecha">`;
+    imageLeft.innerHTML = `<img src="upload/${firstImage}" alt="Imagen Izquierda">`;
+    imageRight.innerHTML = `<img src="upload/${secondImage}" alt="Imagen Derecha">`;
 
     // Añadir las imágenes al array de imágenes mostradas
     currentImages.push(firstImage, secondImage);
