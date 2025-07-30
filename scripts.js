@@ -91,14 +91,14 @@ function showResult() {
 
     // Mostrar el ganador
     const [winnerImage, maxVotes] = sortedImages[0];
-    winnerText.textContent = `La más bonita para vos es ${imageNames[winnerImage]} con ${maxVotes} votos.`;
+    winnerText.textContent = `el que mejor cae bien es ${imageNames[winnerImage]} con ${maxVotes} votos.`;
 
     // Crear las categorías
     const categories = [
-        { title: 'Apoteosico', range: [0, 4] },       // Primeras 5 imágenes
+        { title: 'Cae bien', range: [0, 4] },       // Primeras 5 imágenes
         { title: 'Parchable', range: [5, 9] },    // Siguientes 5 imágenes
         { title: 'Suave', range: [10, 14] },// Siguientes 5 imágenes
-        { title: 'Hoprrible extremo', range: [15, 19] } // Últimas 5 imágenes
+        { title: 'Cae mal', range: [15, 19] } // Últimas 5 imágenes
     ];
 
     // Mostrar las imágenes con categorías
