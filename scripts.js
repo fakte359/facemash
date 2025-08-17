@@ -1,25 +1,14 @@
 // Lista de imágenes y sus nombres amigables
 const imageNames = {
-    'image1.jpeg': 'Alejo',
-    'image2.jpeg': 'Danel',
-    'image3.jpeg': 'Peso espuma(Cristancho)',
-    'image4.jpeg': 'Cuervo',
-    'image5.jpeg': 'Diomedes',
-    'image6.jpeg': 'Brayan',
-    'image7.jpeg': 'Daniel Rodriguez',
-    'image8.jpeg': 'Carlitos',
-    'image9.jpeg': 'Linguini(Carmona)',
-    'image10.jpeg': 'Valvuena',
-    'image11.jpeg': 'Ricaurte',
-    'image12.jpeg': 'Rayo',
-    'image13.jpeg': 'Cristian',
-    'image14.jpeg': 'Calderon',
-    'image15.jpeg': 'Eberth',
-    'image16.jpeg': 'Parrra',
-    'image17.jpeg': 'Cubides',
-    'image18.jpeg': 'Romero',
-    'image19.jpeg': 'Aldrin',
-    'image20.jpeg': 'Deiby'
+    'image1.jpeg': 'MAFE',
+    'image2.jpeg': 'KATHE',
+    'image3.jpeg': 'CAROLINA',
+    'image4.jpeg': 'DIANA',
+    'image5.jpeg': 'ANGIE',
+    'image6.jpeg': 'CAROL',
+    'image7.jpeg': 'Dakota',
+    'image8.jpeg': 'Kamila',
+    
 };
 
 // Array de imágenes disponibles (solo las claves de imageNames)
@@ -70,9 +59,9 @@ function updateImage(side) {
 
         // Cambiar la imagen en el lado correspondiente
         if (side === 'left') {
-            imageRight.querySelector('img').src = `upload/${newImage}`;
+            imageRight.querySelector('img').src = `uploads/${newImage}`;
         } else {
-            imageLeft.querySelector('img').src = `upload/${newImage}`;
+            imageLeft.querySelector('img').src = `uploads/${newImage}`;
         }
 
         // Añadir la nueva imagen al array de imágenes mostradas
@@ -95,10 +84,10 @@ function showResult() {
 
     // Crear las categorías
     const categories = [
-        { title: 'Cae bien', range: [0, 4] },       // Primeras 5 imágenes
-        { title: 'Parchable', range: [5, 9] },    // Siguientes 5 imágenes
-        { title: 'Suave', range: [10, 14] },// Siguientes 5 imágenes
-        { title: 'Cae mal', range: [15, 19] } // Últimas 5 imágenes
+        { title: 'Esta buena', range: [0, 1] },       // Primeras 5 imágenes
+        { title: 'Parchable', range: [2, 4] },    // Siguientes 5 imágenes
+        { title: 'Suave', range: [6, 7] },// Siguientes 5 imágenes
+        { title: 'Fea', range: [8] } // Últimas 5 imágenes
     ];
 
     // Mostrar las imágenes con categorías
@@ -117,7 +106,7 @@ function showResult() {
             listItem.style.marginBottom = '10px';
 
             const imgElement = document.createElement('img');
-            imgElement.src = `upload/${image}`;
+            imgElement.src = `uploads/${image}`;
             imgElement.alt = imageNames[image];
             imgElement.style.maxWidth = '100px';
             imgElement.style.borderRadius = '10px';
@@ -142,8 +131,8 @@ function loadInitialImages() {
     const secondImage = getRandomImage();
 
     // Mostrar las imágenes en las posiciones izquierda y derecha
-    imageLeft.innerHTML = `<img src="upload/${firstImage}" alt="Imagen Izquierda">`;
-    imageRight.innerHTML = `<img src="upload/${secondImage}" alt="Imagen Derecha">`;
+    imageLeft.innerHTML = `<img src="uploads/${firstImage}" alt="Imagen Izquierda">`;
+    imageRight.innerHTML = `<img src="uploads/${secondImage}" alt="Imagen Derecha">`;
 
     // Añadir las imágenes al array de imágenes mostradas
     currentImages.push(firstImage, secondImage);
